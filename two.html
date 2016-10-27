@@ -1,0 +1,44 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>React Component</title>
+	<script src="http://facebook.github.io/react/js/react.js"></script>
+	<script src="http://facebook.github.io/react/js/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+	<script type="text/babel">
+    var Switch = React.createClass({
+        getInitialState:function(){
+            return {
+                open:false
+            }
+        },
+
+        render:function(){
+            console.log('render Switch Component');
+            var open=this.state.open;
+            return <label className="switch">
+                <input type="checkbox" checked={open} onChange={this.toggleSwitch}/>
+            </label>
+        },
+        toggleSwitch:function(){
+            var open=this.state.open;
+            this.setState({
+                open:!open
+            })
+        }
+
+    });
+
+    ReactDOM.render(
+        <Switch></Switch>,
+        document.getElementById('example')
+    );
+</script>
+</body>
+
+</html>
