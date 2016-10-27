@@ -39,7 +39,7 @@ var app = app || {};
                 }
             }
             return newObj;
-        },
-        ap
+        }
+        
     }
 })();

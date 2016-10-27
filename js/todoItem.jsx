@@ -40,6 +40,41 @@ var app = app || {};
             return (nextProps.todo !== this.props.todo ||
                 nextProps.editing !== this.props.editing ||
                 nextState.editText !== this.state.editText);
+        },
+        componentDidUpdate: function (prevProps) {
+            if (!prevProps.editing && this.props.editing) {
+                var node = React.findDOMNode(this.refs.editField);
+                node.focus();
+                node.setSelectionRange(node.value.length, node.value.length)
+            }
+        },
+        render: function () {
+            return (
+                <li className={classNames({
+                    completed: this.props.todo.completed,
+                    editing: this.props.editing
+                })}>
+                    <div className="view">
+                        <input
+                            className="toggle"
+                            type="checkbox"
+                            checked={this.props.todo.completed}
+                            onChange={this.props.onToggle}
+                            />
+                        <label onDoubleClick={this.handleEdit}>
+                            {this.props.todo.title}
+                        </label>
+                        <button className="destory" onClick={this.props.onDestory}></button>
+                    </div>
+                    <input
+                        ref="editField"
+                        className="edit"
+                        value={this.state.editText}
+                        onBlur={this.handleSubmit}
+                        onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown} />
+                </li>
+            );
         }
     });
 })();
