@@ -41,7 +41,7 @@ const glob = require('glob');
 
 var config = {
     entry: {
-        vendor: ['react', 'react-dom']
+        vendor: ['react', 'react-dom','redux']
     },
     output: {
         path: __dirname + '/dist/js',

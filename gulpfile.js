@@ -1,5 +1,7 @@
 var gulp = require("gulp");
-var gutil = require('gulp-util');
+var gutil = require("gulp-util");
+var del = require("del");
+var rename = require('gulp-rename');
 
 var src = {
     html: "src/html/*.html",
@@ -30,7 +32,7 @@ var del = require("del");
  * clean build dir
  *  */
 function clean(done) {
-    del.sync(dis.root);
+    del.sync(dist.root);
     done();
 }
 /**
