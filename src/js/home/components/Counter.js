@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react'
 
 /**组件的定义 */
 class Counter extends Component {
-    /**属性类型的检查 */
+    /**属性类型的检查 为了性能这个只允许在开发阶段进行验证*/
     static propTypes = {
         counter: PropTypes.number.isRequired,
         /**为函数，且必须存在 */
