@@ -6,40 +6,31 @@ import React, { Component, PropTypes } from 'react'
 class Counter extends Component {
     /**属性类型的检查 */
     static propTypes = {
-        value: PropTypes.number.isRequired,
-        onInCrement: PropTypes.func.isRequired,
-        onDeCrement: PropTypes.func.isRequired
-    }
-
-    incrementIfOdd = () => {
-        if (this.props.value % 2 !== 0) {
-            this.props.onInCrement();
-        }
-    }
-
-    incrementAsync = () => {
-        setTimeout(
-            this.props.onInCrement,
-            1000);
+        counter: PropTypes.number.isRequired,
+        /**为函数，且必须存在 */
+        increment: PropTypes.func.isRequired,
+        incrementIfOdd: PropTypes.func.isRequired,
+        incrementAsync: PropTypes.func.isRequired,
+        decrement: PropTypes.func.isRequired
     }
 
     render() {
-        const {value, onInCrement, onDeCrement} = this.props;
+        const {increment, incrementIfOdd, incrementAsync, decrement, counter} = this.props;
         return (
             <p>
-                Clicked:{value}times
+                Clicked: {counter}times
                 {' '}
-                <button onClick={onInCrement}>+
+                <button onClick={increment}>+
                 </button>
                 {' '}
-                <button onClick={onDeCrement}>-
+                <button onClick={decrement}>-
                 </button>
                 {' '}
-                <button onClick={this.incrementIfOdd}>
+                <button onClick={incrementIfOdd}>
                     Increment if odd
                 </button>
                 {' '}
-                <button onClick={this.incrementAsync}>
+                <button onClick={incrementAsync}>
                     Increment async
                 </button>
             </p>
